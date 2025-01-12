@@ -26,7 +26,6 @@ public class SpawnZombie : MonoBehaviour
             }
             else
             {
-                Debug.Log(spawnTimer);
                 spawnTimer -= Time.deltaTime;
             }
     }
