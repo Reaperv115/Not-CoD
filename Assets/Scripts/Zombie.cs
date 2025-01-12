@@ -8,6 +8,9 @@ public class Zombie : MonoBehaviour
     GameObject target;
 
     float health;
+
+    [SerializeField]
+    ScoreManager scoremanager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +52,9 @@ public class Zombie : MonoBehaviour
             animator.SetTrigger("die");
             nmAgent.velocity = Vector3.zero;
             nmAgent.ResetPath();
+            scoremanager.IncreaseScore();
+            gameObject.transform.tag = "Dead_Zombie"; 
+            Destroy(this);
         }
         else
         {
