@@ -35,7 +35,6 @@ public class BulletScript : MonoBehaviour {
 				}
 				if (hit.transform.tag.Equals("Zombie"))
 				{
-					print("hit a zombie");
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					hit.transform.GetComponent<Zombie>().TakeDamamge(25f);
 					Destroy(gameObject);

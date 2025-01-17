@@ -10,6 +10,8 @@ TagManager:
   - BulletSpawn
   - Weapon
   - Zombie
+  - Dead_Zombie
+  - Jug
   layers:
   - Default
   - TransparentFX
