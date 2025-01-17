@@ -177,15 +177,15 @@ public class GunInventory : MonoBehaviour {
 	 * Unity buil-in method to draw GUI.
 	 * From here I am listing thourhg guns I have and drawing corresponding images on the sceen.
 	 */
-	void OnGUI(){
+	// void OnGUI(){
 
-		if(currentGun){
-			for(int i = 0; i < gunsIHave.Count; i++){
-				DrawCorrespondingImage(i);
-			}
-		}
+	// 	if(currentGun){
+	// 		for(int i = 0; i < gunsIHave.Count; i++){
+	// 			DrawCorrespondingImage(i);
+	// 		}
+	// 	}
 
-	}
+	// }
 
 	[Header("GUI Gun preview variables")]
 	[Tooltip("Weapon icons style to pick.")]
