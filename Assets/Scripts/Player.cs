@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     GameObject endgameCamera;
     [SerializeField]
     GameObject egcfocusPoint;
+    bool endGame;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,11 +27,12 @@ public class Player : MonoBehaviour
     {
         if (health <= 0f)
         {
-            endgameCamera.SetActive(true);
-            endgameCamera.tag = "MainCamera";
-            endgameCamera.transform.LookAt(egcfocusPoint.transform);
-            Destroy(gameObject);
-            print("player died");
+            // endgameCamera.SetActive(true);
+            // endgameCamera.tag = "MainCamera";
+            // endgameCamera.transform.LookAt(egcfocusPoint.transform);
+            // Destroy(gameObject);
+            SceneManager.LoadScene("Game Over");
+            
         }
         scoremanager.DisplayScore();
     }
