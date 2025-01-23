@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Zombies.unity
     guid: 38bb0089216ab41d98ba972dc131e209
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: a1cf0e80939c5ef4da9fdb288a82d3c2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
