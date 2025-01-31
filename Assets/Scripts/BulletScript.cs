@@ -31,18 +31,6 @@ public class BulletScript : MonoBehaviour {
 				if(hit.transform.tag == "Dummie"){
 					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
 					Destroy(gameObject);
-				
-				}
-				if (hit.transform.tag.Equals("Zombie"))
-				{
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					hit.transform.GetComponent<Zombie>().TakeDamamge(25f);
-					Destroy(gameObject);
-				}
-				if (hit.transform.tag.Equals("Dead_Zombie"))
-				{
-					Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
-					Destroy(gameObject);
 				}
 			}		
 			Destroy(gameObject);
