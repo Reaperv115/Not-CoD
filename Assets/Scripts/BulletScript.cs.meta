@@ -15,5 +15,5 @@ AssetOrigin:
   productId: 73776
   packageName: Easy FPS
   packageVersion: 1.0
-  assetPath: Assets/Easy FPS/Scripts/BulletScript.cs
+  assetPath: Assets/Scripts/BulletScript.cs
   uploadId: 157938

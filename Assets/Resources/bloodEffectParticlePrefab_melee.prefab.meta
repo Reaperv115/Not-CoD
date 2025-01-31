@@ -11,5 +11,5 @@ AssetOrigin:
   productId: 73776
   packageName: Easy FPS
   packageVersion: 1.0
-  assetPath: Assets/Easy FPS/Prefabs/bloodEffectParticlePrefab_melee.prefab
+  assetPath: Assets/Resources/bloodEffectParticlePrefab_melee.prefab
   uploadId: 157938
