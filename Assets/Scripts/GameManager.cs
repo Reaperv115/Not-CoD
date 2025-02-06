@@ -15,6 +15,6 @@ public class GameManager : MonoBehaviour
         currentplayerWeapon = Resources.Load<GameObject>("ARs/AR_A_1");
         playerManager.InitializePlayer();
         //playerStanceInst = Instantiate(playerManager.GetPlayerStance(), playerManager.GetPlayer().transform.position, playerManager.GetPlayerStance().transform.rotation, playerManager.GetPlayerTransform());
-        currentplayerweaponInst = Instantiate(currentplayerWeapon, playerManager.GetWeaponSpot().position, currentplayerWeapon.transform.rotation, playerManager.GetWeaponSpot());
+        //currentplayerweaponInst = Instantiate(currentplayerWeapon, playerManager.GetWeaponSpot().position, currentplayerWeapon.transform.rotation, playerManager.GetWeaponSpot());
     }
 }
