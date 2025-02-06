@@ -3,38 +3,29 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    GameObject playerGO, playerGoInst;
-    Transform weaponSpot;
-    Transform[] shoulders;
-    GameObject[] shoulderGOs, shoulderGoInst;
+    GameObject playerGO;
+    Transform weaponPlacement;
+    GameObject arms;
+    Transform armsParent;
+    GameObject primaryWeapon;
+    GameObject[] primaryWeapons;
+    Transform waponSpot;
+    float weaponspotX;
+    int num;
     public void InitializePlayer()
     {
-        shoulders = new Transform[2];
-        shoulderGOs = new GameObject[2];
-        shoulderGoInst = new GameObject[2];
         playerGO = GameObject.FindGameObjectWithTag("Player");
-        shoulders[0] = playerGO.transform.GetChild(2); // Right shoulder
-        shoulders[1] = playerGO.transform.GetChild(3); // Left shoulder
-        shoulderGOs[0] = Resources.Load<GameObject>("right shoulder");
-        shoulderGOs[1] = Resources.Load<GameObject>("left shoulder");
-        shoulderGoInst[0] = Instantiate(shoulderGOs[0], shoulders[0].position, shoulderGOs[0].transform.rotation, shoulders[0]);
-        shoulderGoInst[1] = Instantiate(shoulderGOs[1], shoulders[1].position, shoulderGOs[1].transform.rotation, shoulders[1]);
-        //playerGoInst = Instantiate(playerGO, playerspawnPoint.position, playerGO.transform.rotation);
-        //playerGO = GameObject.Find("Player");
-        weaponSpot = playerGO.transform.GetChild(1);
+        weaponPlacement = playerGO.transform.GetChild(0).GetChild(2);
+        primaryWeapons = Resources.LoadAll<GameObject>("ARs");
+        print(primaryWeapons.Length);
+        primaryWeapon = Resources.Load<GameObject>("ARs/AR_A_1");
+        num = Random.Range(0, primaryWeapons.Length - 1);
+        Instantiate(primaryWeapons[num], weaponPlacement.position, weaponPlacement.rotation, weaponPlacement);
     }
 
     
     public Transform GetWeaponSpot()
     {
-        return weaponSpot;
-    }
-    public GameObject GetPlayer()
-    {
-        return playerGoInst;
-    }
-    public Transform GetPlayerTransform()
-    {
-        return playerGoInst.transform;
+        return weaponPlacement;
     }
 }
