@@ -1,3 +1,4 @@
+using UnityEditor.iOS;
 using UnityEngine;
 
 
@@ -5,22 +6,16 @@ public class PlayerManager : MonoBehaviour
 {
     GameObject playerGO;
     Transform weaponPlacement;
-    GameObject arms;
-    Transform armsParent;
-    GameObject primaryWeapon;
-    GameObject[] primaryWeapons;
-    Transform waponSpot;
-    float weaponspotX;
+    GameObject[] ARs, shotGuns, _smgs;
     int num;
     public void InitializePlayer()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
-        weaponPlacement = playerGO.transform.GetChild(0).GetChild(2);
-        primaryWeapons = Resources.LoadAll<GameObject>("ARs");
-        print(primaryWeapons.Length);
-        primaryWeapon = Resources.Load<GameObject>("ARs/AR_A_1");
-        num = Random.Range(0, primaryWeapons.Length - 1);
-        Instantiate(primaryWeapons[num], weaponPlacement.position, weaponPlacement.rotation, weaponPlacement);
+        ARs = Resources.LoadAll<GameObject>("ARs");
+        shotGuns = Resources.LoadAll<GameObject>("Shotguns");
+        _smgs = Resources.LoadAll<GameObject>("SMGs");
+        num = Random.Range(0, _smgs.Length - 1);
+        //Instantiate(_smgs[num], weaponPlacement.position, weaponPlacement.rotation, weaponPlacement);
     }
 
     
