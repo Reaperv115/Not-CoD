@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609cc558e547d814980842d5419e2428, type: 3}
   m_Name: WeaponManager
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 11400000, guid: 9902754cab4496b45a07a8e70535a518, type: 2}

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c282c2f7dbc044e99c4eae1eb24a7b, type: 3}
   m_Name: PlayerManager
   m_EditorClassIdentifier: 
-  playerspawnPoint: {fileID: 6030818611360637758, guid: 81cfeecc1502c7d468f2805f76bbb2a9, type: 3}
+  spawnPoint: {fileID: 6030818611360637758, guid: 81cfeecc1502c7d468f2805f76bbb2a9, type: 3}
