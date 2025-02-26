@@ -9,14 +9,9 @@ public class InitializeGame : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerManager.LoadPlayer();
+        //playerManager.LoadPlayer();
         weaponManager.LoadWeapons();
-        weaponManager.LoadGun();
-
-        if (playerManager.GetPlayer())
-        {
-            Destroy(gameObject);
-        }
+        //weaponManager.InstantiateGun();
     }
 
     // Update is called once per frame

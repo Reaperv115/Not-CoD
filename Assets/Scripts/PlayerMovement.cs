@@ -20,9 +20,6 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        var cam = GameObject.Find("Starting Camera");
-        if (cam)
-            Destroy(cam);
     }
 
     // Update is called once per frame
@@ -40,23 +37,24 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.idle:
             {
                 animator.SetBool("idle", true);
+                animator.SetBool("walking", false);
                 break;
             }
             case PlayerState.walking:
             {
                 animator.SetBool("walking", true);
+                animator.SetBool("idle", false);
 
                 break;
             }
         }
-        if (characterController.velocity.magnitude > 0f)
+        if (Input.GetKey(KeyCode.W))
         {
-            print("player is walking");
+            print("holding w");
             state = PlayerState.walking;
         }
         else
-        {
-            print("player is idle");   
+        { 
             state = PlayerState.idle;
         }
     }

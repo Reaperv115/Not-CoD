@@ -15,7 +15,7 @@ public class WeaponManager : ScriptableObject
         shotGuns = Resources.LoadAll<GameObject>("Shotguns");
         _smgs = Resources.LoadAll<GameObject>("SMGs");
         num = Random.Range(0, _smgs.Length - 1);
-        weaponGrip = playerManager.GetPlayer().transform.GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(5);
+        weaponGrip = playerManager.GetPlayer().transform.GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(5);
     }
     public GameObject GetRandomGun()
     {
@@ -31,6 +31,7 @@ public class WeaponManager : ScriptableObject
     {
         int weaponIndex = Random.Range(0, ARs.Length);
         var gun = Instantiate(ARs[weaponIndex], weaponGrip.transform.position, weaponGrip.transform.rotation, weaponGrip.transform);
+        Debug.Log(gun);
     }
 
 }

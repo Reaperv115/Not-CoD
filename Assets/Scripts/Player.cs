@@ -8,18 +8,25 @@ public class Player : MonoBehaviour
     [SerializeField]
     ScoreManager scoremanager;
     Image healthBar;
+    Animator animator;
+    CharacterController characterController;
+
+    enum PlayerState
+    {
+        idle,
+        walking,
+        running,
+    } 
+    PlayerState playerState;
     float health;
-    GameObject endgameCamera;
-    [SerializeField]
-    GameObject egcfocusPoint;
-    bool endGame;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         health = 100;
         healthBar = GameObject.Find("Player Health Bar").transform.GetChild(2).GetComponent<Image>();
-        endgameCamera = GameObject.Find("EndGame Camera");
-        endgameCamera.SetActive(false);
+        animator = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
+        playerState = PlayerState.idle;
     }
 
     // Update is called once per frame
@@ -27,14 +34,36 @@ public class Player : MonoBehaviour
     {
         if (health <= 0f)
         {
-            // endgameCamera.SetActive(true);
-            // endgameCamera.tag = "MainCamera";
-            // endgameCamera.transform.LookAt(egcfocusPoint.transform);
-            // Destroy(gameObject);
             SceneManager.LoadScene("Game Over");
             
         }
-        scoremanager.DisplayScore();
+
+        switch(playerState)
+        {
+            case PlayerState.idle:
+            {
+                animator.SetBool("idle", true);
+                break;
+            }
+            case PlayerState.walking:
+            {
+                animator.SetBool("walking", true);
+                break;
+            }
+        }
+        //scoremanager.DisplayScore();
+    }
+    void FixedUpdate()
+    {
+        print(playerState);
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            playerState = PlayerState.walking;
+        }
+        else
+        {
+            playerState = PlayerState.idle;
+        }
     }
 
     public void TakeDamage(int dmg)
