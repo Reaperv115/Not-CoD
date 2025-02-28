@@ -18,8 +18,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        // rb = GetComponent<Rigidbody>();
+         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,12 +37,12 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.idle:
             {
                 animator.SetBool("idle", true);
-                animator.SetBool("walking", false);
+                animator.SetBool("walk", false);
                 break;
             }
             case PlayerState.walking:
             {
-                animator.SetBool("walking", true);
+                animator.SetBool("walk", true);
                 animator.SetBool("idle", false);
 
                 break;
