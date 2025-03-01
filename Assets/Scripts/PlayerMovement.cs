@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,11 +7,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     Animator animator;
     float speed = 12f;
+    Transform followTarget;
 
     enum PlayerState
     {
         idle,
-        walking,
+        walking_forward,
+        walking_backward,
+        strafe_right,
+        strafe_left,
         running
     } 
     PlayerState state;
@@ -18,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        // rb = GetComponent<Rigidbody>();
-         animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        followTarget = transform.GetChild(2);
     }
 
     // Update is called once per frame
@@ -28,8 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-
+        Vector3 move = followTarget.right * x + followTarget.forward * z;
         characterController.Move(move * speed * Time.deltaTime);
 
         switch (state)
@@ -37,23 +41,66 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.idle:
             {
                 animator.SetBool("idle", true);
-                animator.SetBool("walk", false);
+                animator.SetBool("walk forward", false);
+                animator.SetBool("walk backward", false);
+                animator.SetBool("strafe right", false);
+                animator.SetBool("strafe left", false);
                 break;
             }
-            case PlayerState.walking:
+            case PlayerState.walking_forward:
             {
-                animator.SetBool("walk", true);
                 animator.SetBool("idle", false);
-
+                animator.SetBool("walk forward", true);
+                animator.SetBool("walk backward", false);
+                animator.SetBool("strafe right", false);
+                animator.SetBool("strafe left", false);
+                break;
+            }
+            case PlayerState.walking_backward:
+            {
+                animator.SetBool("idle", false);
+                animator.SetBool("walk backward", true);
+                animator.SetBool("walk forward", false);
+                animator.SetBool("strafe right", false);
+                animator.SetBool("strafe left", false);
+                break;
+            }
+            case PlayerState.strafe_right:
+            {
+                animator.SetBool("idle", false);
+                animator.SetBool("walk backward", false);
+                animator.SetBool("walk forward", false);
+                animator.SetBool("strafe right", true);
+                animator.SetBool("strafe left", false);
+                break;
+            }
+            case PlayerState.strafe_left:
+            {
+                animator.SetBool("idle", false);
+                animator.SetBool("walk backward", false);
+                animator.SetBool("walk forward", false);
+                animator.SetBool("strafe right", false);
+                animator.SetBool("strafe left", true);
                 break;
             }
         }
         if (Input.GetKey(KeyCode.W))
         {
-            print("holding w");
-            state = PlayerState.walking;
+            state = PlayerState.walking_forward;
         }
-        else
+        if (Input.GetKey(KeyCode.S))
+        {
+            state = PlayerState.walking_backward;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            state = PlayerState.strafe_right;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            state = PlayerState.strafe_left;
+        }
+        if (characterController.velocity.magnitude <= 0f)
         { 
             state = PlayerState.idle;
         }
