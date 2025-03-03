@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     Rigidbody rb;
     Animator animator;
+    Animation animation;
     float speed = 1.5f;
     Transform followTarget;
 
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         followTarget = transform.GetChild(2);
+        animator.SetFloat("walk multiplier", 3);
     }
 
     // Update is called once per frame

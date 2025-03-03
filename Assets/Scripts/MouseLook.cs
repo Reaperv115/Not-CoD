@@ -17,14 +17,10 @@ public class MouseLook : MonoBehaviour
         float verticalInput = Input.GetAxis("Mouse Y");
         
 
-        if (Input.GetAxis("Mouse Y") < 0)
+        if (horizontalInput != 0 || verticalInput != 0)
         {
             transform.Rotate(-verticalInput, horizontalInput, 0);
             print("moving mouse");
-        }
-        else if (Input.GetAxis("Mouse Y") > 0)
-        {
-            transform.Rotate(-verticalInput, horizontalInput, 0);
         }
     }
 }
