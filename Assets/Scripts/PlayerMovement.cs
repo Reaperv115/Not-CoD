@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     Rigidbody rb;
     Animator animator;
-    float speed = 12f;
+    float speed = 1.5f;
     Transform followTarget;
 
     enum PlayerState

@@ -6,7 +6,6 @@ public class WeaponManager : ScriptableObject
 {
     [SerializeField]
     PlayerManager playerManager;
-    Transform weaponGrip;
     GameObject[] ARs, shotGuns, _smgs;
     int num;    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void LoadWeapons()
@@ -22,15 +21,10 @@ public class WeaponManager : ScriptableObject
         int num = Random.Range(0, ARs.Length - 1);
         return ARs[num];
     }
-
-    public Transform GetGrip()
-    {
-        return weaponGrip;
-    }
     public void InstantiateGun()
     {
         int weaponIndex = Random.Range(0, ARs.Length);
-        var gun = Instantiate(ARs[weaponIndex], weaponGrip.transform.position, weaponGrip.transform.rotation, weaponGrip.transform);
+        var gun = Instantiate(ARs[weaponIndex], playerManager.GetPlayer().GetComponent<Player>().GetWeaponGrip().position, playerManager.GetPlayer().GetComponent<Player>().GetWeaponGrip().rotation, playerManager.GetPlayer().GetComponent<Player>().GetWeaponGrip());
         Debug.Log(gun);
     }
 
