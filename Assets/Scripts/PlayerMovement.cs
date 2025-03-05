@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     Rigidbody rb;
     Animator animator;
-    Animation animation;
-    float speed = 1.5f;
+    float walkingSpeed = 1.5f;
+    float sprintingSpeed = 3f;
     Transform followTarget;
 
     enum PlayerState
@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
         walking_backward,
         strafe_right,
         strafe_left,
+        sprint,
         running
     } 
     PlayerState state;
@@ -35,8 +36,20 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = followTarget.right * x + followTarget.forward * z;
-        characterController.Move(move * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            state = PlayerState.sprint;
+            Vector3 move = followTarget.right * x + followTarget.forward * z;
+            move = Vector3.ClampMagnitude(move, 1f);
+            characterController.Move(move * sprintingSpeed * Time.deltaTime);
+        }
+        else
+        {
+            state = PlayerState.walking_forward;
+            Vector3 move = followTarget.right * x + followTarget.forward * z;
+            move = Vector3.ClampMagnitude(move, 1f);
+            characterController.Move(move * walkingSpeed * Time.deltaTime);
+        }
 
         switch (state)
         {
@@ -83,6 +96,16 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("walk forward", false);
                 animator.SetBool("strafe right", false);
                 animator.SetBool("strafe left", true);
+                break;
+            }
+            case PlayerState.sprint:
+            {
+                animator.SetBool("idle", false);
+                animator.SetBool("walk backward", false);
+                animator.SetBool("walk forward", false);
+                animator.SetBool("strafe right", false);
+                animator.SetBool("strafe left", false);
+                animator.SetBool("sprint", true);
                 break;
             }
         }

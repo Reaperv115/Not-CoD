@@ -184,13 +184,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: 39e90251966f314479626806e4c8b0bb, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: walk multiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -214,13 +214,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: 20234fa4a8f93784cbaae302a56a1bc0, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: walk multiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -244,13 +244,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: d8b0f306042fb004fa26f4563039ccf6, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: walk multiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -394,6 +394,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: strafe left
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: walk multiplier
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -875,13 +881,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: a7d2739c4be12e343b7c41b97dd1d45e, type: 3}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: walk multiplier
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
